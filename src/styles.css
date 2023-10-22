@@ -1,12 +1,15 @@
 body {
+    font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
     background-color: #f5f5f5;
 }
 
 div.container {
-    border-style: solid;
-    border-width: 1px;
-    border-color: red;
     width: 550px;
+}
+
+h1 {
+    font-size: 100px;
+    color: rgba(175, 47, 47, 0.15);
 }
 
 input[type="checkbox"] {
@@ -16,4 +19,37 @@ input[type="checkbox"] {
 
 .form {
     border: solid 1px #ddd;
+}
+
+.form form {
+    background-color: white;
+}
+
+.form input {
+    border: none;
+}
+
+.main {
+    border: solid 1px #ddd;
+    border-bottom: none;
+}
+
+.main > ul > li {
+    border-bottom: solid 1px #ededed;
+    color: #777;
+}
+
+footer {
+    border: solid 1px #ddd;
+    background-color: white;
+}
+
+.count,
+button {
+    color: #777;
+}
+
+button {
+    background: none;
+    border: none;
 }
