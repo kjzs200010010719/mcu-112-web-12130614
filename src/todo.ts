@@ -6,4 +6,9 @@ export class Todo{
     ){}
 
     finishDate?:Date;
+
+    setFinished(finishDate: Date):void{
+    this.hasFinished = true;
+    this.finishDate = finishDate;
+    }    
 }
