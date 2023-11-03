@@ -8,6 +8,5 @@ console.log("Todo Name",todo);
 const hasFinished = false;
 console.log('Has Finished:',hasFinished);
 
-let finishDate =new Date;
-finishDate = new Date();
+let finishDate:Date| undefined;
 console.log('Finish Date:',finishDate);
