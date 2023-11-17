@@ -9,12 +9,11 @@ import { CommonModule } from '@angular/common';
   styleUrl: './todo.component.css',
 })
 export class TodoComponent {
-    content = '待辦事項 A';
+  content = '待辦事項 A';
 
-    hasFinished = false;
+  hasFinished = false;
 
-    onSetStatus(hasFinished: boolean): void {
+  onSetStatus(hasFinished: boolean): void {
     this.hasFinished = hasFinished;
-
-    }
   }
+}
