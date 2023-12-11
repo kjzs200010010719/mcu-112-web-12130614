@@ -1,5 +1,5 @@
 import { TaskService } from './services/task.service';
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { JsonPipe } from '@angular/common';
@@ -13,10 +13,14 @@ import { Todo } from './model/todo';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   TaskService = inject(TaskService);
 
-  tasks = [new Todo(1, '待辦事項 A'), new Todo(2, '待辦事項 B')];
+  tasks: Todo[] = [];
+
+  ngOnInit(): void {
+    this.tasks = this.TaskService.getAll();
+  }
 
   onAdd(): void {
     this.TaskService.add('待辦事項 C');
