@@ -6,6 +6,7 @@ import { JsonPipe, NgIf } from '@angular/common';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { Todo } from './model/todo';
 import { TodoDetailComponent } from './todo-detail/todo-detail.component';
+import { TaskRemoteService } from './services/task-remote.service';
 
 @Component({
   selector: 'app-root',
@@ -21,25 +22,25 @@ import { TodoDetailComponent } from './todo-detail/todo-detail.component';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  TaskService = inject(TaskService);
+  taskService = inject(TaskRemoteService);
 
   tasks: Todo[] = [];
 
   selectedId?: number;
 
   ngOnInit(): void {
-    this.tasks = this.TaskService.getAll();
+    this.taskService.getAll().subscribe((tasks) => (this.tasks = tasks));
   }
 
   onAdd(): void {
-    this.TaskService.add('待辦事項 C');
+    this.taskService.add('待辦事項 C');
   }
 
   onRemove(id: number): void {
-    this.TaskService.remove(id);
+    this.taskService.remove(id);
   }
 
   onStateChange({ id, state }: { id: number; state: boolean }): void {
-    this.TaskService.updateState(id, state);
+    this.taskService.updateState(id, state);
   }
 }
