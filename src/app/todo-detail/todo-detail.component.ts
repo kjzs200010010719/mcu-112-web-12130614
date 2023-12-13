@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { AsyncPipe, NgIf } from '@angular/common';
 import {
   Component,
   HostBinding,
@@ -10,11 +10,12 @@ import {
 
 import { Todo } from '../model/todo';
 import { TaskRemoteService } from '../services/task-remote.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-todo-detail',
   standalone: true,
-  imports: [CommonModule],
+  imports: [NgIf, AsyncPipe],
   templateUrl: './todo-detail.component.html',
   styleUrl: './todo-detail.component.css',
 })
@@ -22,7 +23,7 @@ export class TodoDetailComponent implements OnChanges {
   @Input({ transform: numberAttribute })
   id!: number;
 
-  task?: Todo;
+  task$!: Observable<Todo | undefined>;
 
   private readonly taskService = inject(TaskRemoteService);
 
@@ -30,6 +31,6 @@ export class TodoDetailComponent implements OnChanges {
   class = 'todo-detail';
 
   ngOnChanges(): void {
-    this.taskService.getById(this.id).subscribe((task) => (this.task = task));
+    this.task$ = this.taskService.getById(this.id);
   }
 }
