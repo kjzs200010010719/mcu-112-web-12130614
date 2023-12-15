@@ -7,10 +7,10 @@ import {
   numberAttribute,
   OnChanges,
 } from '@angular/core';
+import { Observable } from 'rxjs';
 
 import { Todo } from '../model/todo';
 import { TaskRemoteService } from '../services/task-remote.service';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-todo-detail',
